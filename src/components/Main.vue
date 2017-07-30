@@ -2,23 +2,14 @@
   <div class="nav" :class="[isOpen ? nav_open : nav_close]">
     <el-progress v-show="process_show" :text-inside="true" :stroke-width="2" :percentage="process_num"></el-progress>
     <img src="../../src/assets/img/logo.jpg" alt="">
-    <div class="nav-bar">
-      <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/aboutMe' }"> 关于大朋</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{path:'/skill'}">技能</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{path:'/record'}">履历</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{path:'/blog'}">blog</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{path:'/work'}">作品展示</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{path:'/connect me'}">联系我</el-breadcrumb-item>
-      </el-breadcrumb>
-    </div>
-      <clock class="clock"></clock>
+    <nav-bar></nav-bar>
+      <clock clagis="clock "></clock>
   </div>
-
 </template>
 <script>
   import $ from 'jquery'
   import clock from './clock.vue'
+  import navBar from './navBar.vue'
 
   export default {
     data() {
@@ -32,7 +23,9 @@
       }
     },
     components: {
-      'clock': clock
+      'clock': clock,
+      'navBar': navBar
+
     },
     methods: {
       step() {
@@ -109,8 +102,6 @@
     padding-left: 2px;
     color: #000;
   }
-
-
 
   .clock {
     width: 80%;

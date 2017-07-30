@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import main from '@/components/main'
 import aboutMe from '../pages/aboutMe'
 import blog from '../pages/blog'
-import record from '../pages/record'
 import skill from '../pages/skill.vue'
 import work from '../pages/work'
 Vue.use(Router)
@@ -31,14 +30,7 @@ export default new Router({
       blog
     }
     ,
-    {
-      path: '/record',
-      name:
-        'record',
-      component:
-      record
-    }
-    ,
+
     {
       path: '/skill',
       name:

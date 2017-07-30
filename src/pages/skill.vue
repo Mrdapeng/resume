@@ -1,5 +1,6 @@
 <template>
   <div class="skill">
+    <nav-bar></nav-bar>
     <div class="carousel">
       <div class="carousel__stage">
         <div class="spinner spinner--left">
@@ -7,8 +8,8 @@
             <div class="content" data-type="iceland">
               <div class="content__left">
               </div>
-              <div class="content__right">
-                <div class="content__main">
+              <div class="content__right ">
+                <div class="content__main ">
                   <p>1.熟练掌握 DIV+CSS 以及弹性盒和响应式局，能进行语义化的标签书写</p>
                   <p>2.理解 WEB 标准化开发。掌握 html5 的新特性。</p>
                   <p>3.能运用jade ejs</p>
@@ -25,7 +26,7 @@
               </div>
               <div class="content__right">
                 <div class="content__main">
-                  <p>1.熟练运用 css 及 css3 新属性。</p>
+                  <p class="animated ">1.熟练运用 css 及 css3 新属性。</p>
                   <p>2.注重浏览器兼容性，掌握常见的 css hack。</p>
                   <p>3.掌握并熟练运用 bootstrap 框架并尝试阅读过其源码实现。掌握 css 预编译:Sass、Less、stylus.</p>
                   <p> 4.掌握flex布局，了解Grid Layout</p>
@@ -52,20 +53,17 @@
               </div>
             </div>
           </div>
-          <div class="spinner__face" data-bg="#312f2d">
+          <div class="spinner__face" data-bg="#000">
             <div class="content" data-type="peru">
               <div class="content__left">
-                <h1>PERU<br><span>SOUTH AMERICA</span></h1>
               </div>
               <div class="content__right">
                 <div class="content__main">
-                  <p>“For me, Peru is the molten core of South America, a distillation of the oldest traditions
-                    and the finest building, weaving and art made by the most sophisticated cultures on the
-                    continent. In Peru the wildest landscapes – from frozen Andean peaks to the deep Amazon
-                    – help us re-forge our connection to the natural world. It is also a cultural stew, where
-                    diverse peoples live side by side, negotiating modern life with humor and aplomb. Beyond
-                    that, the cuisine alone makes it worth the trip. Every return is rich and surprising.”</p>
-                  <p>– Carolyn McCarthy</p>
+                  <p>1.Node:熟练运用npm进行开发，熟悉包管理机制</p>
+                  <p>2.能使用 gulp、webpack 進行工程化的前端开发</p>
+                  <p>3.熟悉 express 框架。</p>
+                  <p>4.熟练使用git，gitlab等版本控制工具</p>
+                  <p>5.掌握ejs</p>
                 </div>
                 <h3 class="content__index">04</h3>
               </div>
@@ -79,15 +77,16 @@
 
     <!--  Poor man's preloader -->
     <div style="height: 0; width: 0; overflow: hidden">
-      <img src="../assets/img/peru.jpg">
-      <img src="../assets/img/china.jpg">
-      <img src="../assets/img/usa.jpg">
       <img src="../assets/img/css3.jpg">
+      <img src="../assets/img/html5.png">
+      <img src="../assets/img/js.png">
+      <img src="../assets/img/map.png">
     </div>
   </div>
 </template>
 <script>
   import $ from 'jquery'
+  import navBar from '../components/navBar.vue'
 
   export default {
 
@@ -247,6 +246,9 @@
       $(function () {
         init();
       });
+    },
+    components: {
+      navBar: navBar
     }
   }
 </script>
@@ -264,7 +266,7 @@
 
   body {
     background: #fff;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   }
 
   .skill {
@@ -521,11 +523,7 @@
     opacity: 0.8;
   }
 
-  .content__right .content__main p:last-child {
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    font-size: 0.85em;
-  }
+
 
   .content__right .content__index {
     font-size: 30vh;
@@ -536,7 +534,9 @@
     font-family: oswald;
     color: #fff;
   }
-
+  .content__main p{
+    font-size: 30px;
+  }
   [data-type="iceland"] .content__left {
 
     background-image: url("../assets/img/html5.png");
@@ -571,7 +571,9 @@
   }
 
   [data-type="peru"] .content__left {
-    background-image: url("../assets/img/peru.jpg");
+    background-image: url("../assets/img/map.png");
+    background-size: 90%;
+    background-position: 50% 50%;
   }
 
   .spinner--right [data-type="peru"] .content__left {

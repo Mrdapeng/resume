@@ -1,5 +1,5 @@
 <template>
-  <canvas id="canvas" style="display:block;margin: 50px auto; "></canvas>
+    <canvas id="canvas" style="display:block;margin: 50px auto; "></canvas>
 </template>
 <script>
   export default {
