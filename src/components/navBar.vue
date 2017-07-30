@@ -6,7 +6,7 @@
         <el-breadcrumb-item :to="{path:'/skill'}">技能</el-breadcrumb-item>
         <el-breadcrumb-item :to="{path:'/blog'}">blog</el-breadcrumb-item>
         <el-breadcrumb-item :to="{path:'/work'}">作品展示</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{path:'/connectme'}">联系我</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{path:'/connect'}">联系我</el-breadcrumb-item>
 
         <i class="el-icon-share"></i>
         <i class="el-icon-message"></i>

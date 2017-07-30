@@ -5,6 +5,8 @@ import aboutMe from '../pages/aboutMe'
 import blog from '../pages/blog'
 import skill from '../pages/skill.vue'
 import work from '../pages/work'
+import  connect from '../pages/connect.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -16,35 +18,31 @@ export default new Router({
     },
     {
       path: '/aboutMe',
-      name:
-        'aboutMe',
-      component:
-      aboutMe
+      name: 'aboutMe',
+      component: aboutMe
     }
     ,
     {
       path: '/blog',
-      name:
-        'blog',
-      component:
-      blog
+      name: 'blog',
+      component: blog
     }
     ,
 
     {
       path: '/skill',
-      name:
-        'skill',
-      component:
-      skill
+      name: 'skill',
+      component: skill
     }
     ,
     {
       path: '/work',
-      name:
-        'work',
-      component:
-      work
+      name: 'work',
+      component: work
+    },
+    {
+      path: '/connect',
+      component: connect
     }
   ]
 })
