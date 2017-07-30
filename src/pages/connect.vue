@@ -221,6 +221,7 @@
     left: 7px;
   }
   .content{
+    max-width: 100%;
     margin-top: 20%;
   }
   .card-item {
