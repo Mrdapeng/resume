@@ -110,12 +110,15 @@
   }
 
   .myimg {
-    margin: 30px auto;
     height: 400px;
-    /*float: left;*/
+    float: left;
+    margin-left: 10%;
   }
 
   .type-js {
     max-width: 800px;
+    float: left;
+    margin-left: 40%;
+    top: 5%;
   }
 </style>
