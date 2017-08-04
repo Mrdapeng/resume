@@ -1,4 +1,6 @@
 <template>
+<div>
+  <navbar></navbar>
   <el-carousel :interval="4000" type="card" height="674px">
     <el-carousel-item v-for="(item,index) in worklist" :key="index">
       <a href="https://github.com/Mrdapeng"><img :src=item.imgurl alt=""></a><
@@ -6,6 +8,7 @@
       <p>{{item.imgurl}}</p>
     </el-carousel-item>
   </el-carousel>
+</div>
 </template>
 
 <style>
@@ -34,7 +37,7 @@
   import work6 from '../assets/img/work6.png'
   import work7 from '../assets/img/work7.png'
   import work8 from '../assets/img/work8.png'
-
+  import  navbar from '../components/navBar.vue'
   export default {
     data() {
       return {
@@ -60,6 +63,9 @@
 
         ]
       }
+    },
+    components:{
+      'navbar':navbar
     }
   }
 </script>

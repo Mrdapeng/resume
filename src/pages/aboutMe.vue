@@ -92,7 +92,10 @@
     opacity: 0;
     font-size: 30px;
     font-weight: 300;
-
+    position: fixed;
+    top: 36%;
+    max-width: 600px;
+    left: 1200px;
   }
 
   .cursor {
@@ -112,7 +115,7 @@
   .myimg {
     height: 400px;
     float: left;
-    margin-left: 10%;
+    margin-left: 20%;
   }
 
   .type-js {
