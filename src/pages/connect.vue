@@ -1,252 +1,180 @@
 <template>
-  <div class="connect">
+  <div class="container">
     <navbar></navbar>
-    <div class="content">
-      <div class="card">
-        <div class="fsbanner" id="demo-1">
-          <div class="card-item" id="phone">
-            <p class="title">Phone:   18811462052</p>
-            <p class="content"></p>
-          </div>
-          <div class="card-item" id="email" >
-            <p class="title">Email:   liurenpeng666@163.com</p>
-          </div>
-          <div class="card-item" id="github">
-            <p class="title">github:   https://github.com/Mrdapeng/</p>
-          </div>
-          <div class="card-item" id="blog" >
-            <p class="title">blog:   http://www.jianshu.com/u/832961e6b5fc</p>
-          </div>
-        </div>
+    <!-- effect-3 html -->
+    <div class="single-member effect-3">
+      <div class="member-image">
+        <img src="../assets/img/phone.png" alt="Member">
+      </div>
+      <div class="member-info">
+        <h3>phone</h3>
+        <p>__________________</p>
+        <div class="social-touch">
+          <h3>18811462052</h3>
 
+        </div>
       </div>
     </div>
+    <!-- effect-3 html end -->
 
+    <div class="single-member effect-3">
+      <div class="member-image">
+        <img src="../assets/img/Git.png" alt="Member">
+      </div>
+      <div class="member-info">
+        <h3>Github</h3>
+        <p>__________________</p>
+        <div class="social-touch">
+          <h3><a href="https://github.com/Mrdapeng">MrDapeng</a></h3>
+        </div>
+      </div>
+    </div>
+    <div class="single-member effect-3">
+      <div class="member-image">
+        <img src="../assets/img/mail.png" alt="Member">
+      </div>
+      <div class="member-info">
+        <h3>mail</h3>
+        <p>__________________</p>
+        <div class="social-touch">
+          <h3><a href="mailto:liurenpeng666@163.com">liurenpeng</a></h3>
+
+        </div>
+      </div>
+    </div>
+    <div class="single-member effect-3">
+      <div class="member-image">
+        <img src="../assets/img/blog.png" alt="Member">
+      </div>
+      <div class="member-info">
+        <h3>Blog</h3>
+        <p>__________________</p>
+        <div class="social-touch">
+          <h3><a href="http://www.jianshu.com/u/832961e6b5fc">简书</a></h3>
+
+        </div>
+      </div>
+    </div>
   </div>
-
 </template>
 <script>
   import navbar from '../components/navBar.vue'
-  import $ from 'jquery'
 
   export default {
     data() {
       return {}
     },
-    mounted() {
-      var fsBanner = function (container, options) {
-        var self = this;
-
-        var defaults = {
-          'showName': true,
-          'toUpdate': {},
-          'whenEmpty': {},
-          'trigger': 'click',
-          'hideParent': null,
-          'onChanged': null
-        }
-
-        this.options = $.extend({}, defaults, options);
-
-        this.ilast = -1;
-
-        this.setup = function () {
-          this.container = $(container);
-          this.items = this.container.find('div');
-
-          if (!this.container.width()) this.container.width(this.container.parent().width());
-
-          this.part = this.container.width() / this.items.length;
-          this.mini = this.part / 4;
-          this.widmain = this.container.width() - (this.mini * this.items.length - 1);
-
-          this.items.css({'height': this.container.height(), 'width': this.widmain + this.mini});
-
-          if (!this.options.showName) this.items.find('.name').hide();
-
-          this.items.each(function (i) {
-            var $item = $(this);
-            $item.css({'z-index': i});
-            if (self.options.trigger == 'click') $item.on('click', function () {
-              self.selectItem($item, i);
-            });
-            if (self.options.trigger == 'mouse') $item.on('mouseenter', function () {
-              self.selectItem($item, i, true);
-            });
-          });
-
-          if (self.options.trigger == 'mouse') {
-            this.container.on('mouseleave', function () {
-              self.resetcss();
-            });
-          }
-
-          this.resetcss();
-          this.container.show();
-        }
-
-        this.resetcss = function () {
-          this.items.each(function (i) {
-            var $item = $(this);
-            $item.stop().animate({'left': i * self.part});
-
-            if (self.options.showName) {
-              var $name = $item.find('.name');
-              if ($name.hasClass('minimized')) $name.hide().removeClass('minimized').fadeIn('fast');
-            }
-          });
-          this.ilast = null;
-          this.updateHtml();
-        };
-
-        this.selectItem = function ($expanded, iexpanded, forceClick) {
-          this.$lastexpanded = this.$expanded;
-
-          if (forceClick) this.ilast = null;
-          if (iexpanded == this.ilast) {
-            this.$expanded = null;
-            this.resetcss();
-          } else {
-            this.$expanded = $expanded;
-            this.items.each(function (i) {
-              var $item = $(this);
-              if (i <= iexpanded) {
-                $item.stop().animate({'left': i * self.mini});
-              } else {
-                $item.stop().animate({'left': i * self.mini + self.widmain});
-              }
-              if (self.options.showName) {
-                var $name = $item.find('.name');
-                var method = (i == iexpanded) ? 'removeClass' : 'addClass';
-                if (method == 'addClass' && $name.hasClass('minimized')) method = '';
-                if (method) $name.hide()[method]('minimized').fadeIn('fast');
-              }
-            });
-            this.ilast = iexpanded;
-            this.updateHtml($expanded);
-          }
-          this.fireChanged();
-        };
-
-        this.updateHtml = function ($expanded) {
-          this.$expanded = $expanded;
-
-          var $parent = $(self.options.hideParent);
-          $.each(this.options.toUpdate, function (field, selector) {
-            var $obj = $(selector);
-            var showit = false;
-            var value = '';
-            if ($expanded) {
-              $parent.show();
-              value = $expanded.find('.' + field).html();
-              showit = true;
-            } else {
-              if ($parent.length) {
-                showit = false;
-                $parent.hide();
-              } else {
-                if (self.options.whenEmpty[field]) {
-                  value = self.options.whenEmpty[field];
-                  showit = true;
-                }
-              }
-            }
-            $obj.hide();
-            if (showit) $obj.html(value).fadeIn('fast');
-          });
-        };
-
-        this.fireChanged = function () {
-          if (this.options.onChanged) {
-            this.options.onChanged(this.$expanded, this.$lastexpanded);
-          }
-        };
-
-        this.setup();
-      };
-
-      $.fn.fsBanner = function (options) {
-        return new fsBanner(this, options);
-      };
-      $('#demo-1').fsBanner({'trigger': 'mouse'})
+    methods:{
 
     },
-    components: {
-      'navbar': navbar
+    components:{
+      'navbar':navbar
     }
-
   }
-
 </script>
 <style scoped>
-
-  .fsbanner, .fsbanner > div > span {
-    /* obrigatório */
-    display:none;
-  }
-  div.fsbanner {
-    /* obrigatorio */
-    position:relative;
-    overflow:hidden;
-    /* opcional */
-    height:300px;
-    color:#fff;
-    font-size:20px;
-    font-family:Verdana;
-    font-weight:bold;
-    border-radius:5px;
-    -webkit-text-stroke: 1px black;
+  .container {
+    margin: 0 auto;
+    max-width: 1000px;
   }
 
+  /*= common css to all effects =*/
 
-  .fsbanner > div {
-    position:absolute;
-    background-size:cover;
-    cursor:pointer;
-    top:0px;
-    left:0px;
-  }
-  .fsbanner > div .name {
-    display:block;
-    position:absolute;
-    left:10px;
-    bottom:10px;
-  }
-  .fsbanner > div .name.minimized {
-    /* css3 */
-    transform: rotate(-90deg);
-    transform-origin: left top 0;
-    /* pode ser necessário ajustar isso dependendo da fonte escolhida */
-    bottom: -13px;
-    left: 7px;
-  }
-  .content{
-    max-width: 100%;
-    margin-top: 20%;
-  }
-  .card-item {
+  .single-member {
+    width: 280px;
+    margin: 30px 2.5%;
+    background-color: #fff;
+    text-align: center;
     position: relative;
+  }
+
+  .member-image img {
+    max-width: 100%;
+    vertical-align: middle;
+  }
+
+  h3 {
+    font-size: 24px;
+    font-weight: normal;
+    margin: 15px 0 0;
+    text-transform: uppercase;
+  }
+
+  h5 {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0 0 15px;
+    line-height: 22px;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+    padding: 0 30px;
+    margin-bottom: 10px;
+  }
+
+  /*= effect-3 css =*/
+
+  .effect-3 {
+    max-height: 302px;
+    min-height: 302px;
+    overflow: hidden;
+
+  }
+
+  .effect-3 a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  .effect-3 h3 {
+    padding-top: 7px;
+    line-height: 33px;
+  }
+
+  .effect-3 .member-image {
+    border-bottom: 5px solid #ccc;
+    transition: 0.4s;
+    height: 230px;
+    width: 80%;
+    display: inline-block;
+    float: none;
+    vertical-align: middle;
+  }
+
+  .effect-3 .member-info {
+    transition: 0.4s;
+  }
+
+  .effect-3 .member-image img {
+    width: 100%;
+    vertical-align: bottom;
+  }
+
+  .effect-3 .social-touch {
+    background-color: rgba(0, 0, 0, 0.1);
+    float: left;
     left: 0;
-    top: 0;
-  }
-  .card-item p{
-    position: absolute;
-    left: 25%;
-    top: 10%;
+    bottom: 0;
+    overflow: hidden;
+    padding: 5px 0;
+    width: 100%;
+    transition: 0.4s;
   }
 
-  #phone{
-    background-image: url("../assets/img/a1.png");
+  .effect-3:hover .member-image {
+    border-bottom: 0;
+    border-radius: 0 0 5px 5px;
+    height: 81px;
+    display: inline-block;
+    overflow: hidden;
+    width: 109px;
+    transition: 0.4s;
   }
-  #email{
-    background-image: url("../assets/img/a2.png");
 
-  }
-  #github{
-    background-image: url("../assets/img/a3.png");
-  }
-  #blog{
-    background-image: url("../assets/img/a4.png");
+  /*= effect-3 css end =*/
 
-  }
+
 </style>

@@ -5,11 +5,13 @@ import aboutMe from '../pages/aboutMe'
 import blog from '../pages/blog'
 import skill from '../pages/skill.vue'
 import work from '../pages/work'
-import  connect from '../pages/connect.vue'
+import connect from '../pages/connect.vue'
+import notfind from '../components/notfind.vue'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -43,6 +45,10 @@ export default new Router({
     {
       path: '/connect',
       component: connect
+    }, {
+      path: '/404',
+      component: notfind
+
     }
   ]
 })
